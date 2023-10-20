@@ -266,3 +266,10 @@ void pcd8544_set_cursor(PCD8544_t* screen, uint8_t X, uint8_t Y)
 	pcd8544_set_X_RAM(screen, X);
 	pcd8544_set_Y_RAM(screen, Y);
 }
+
+void pcd8544_write_bitmap(PCD8544_t* screen, const uint8_t img[504])
+{
+	pcd8544_set_cursor(screen, 0, 0); // Sets cursor at top left corner (0, 0)
+	for (int i = 0; i < 504; i++) pcd8544_write_data(screen, img[i]); // Sends pixel data to screen, which auto-increments to next RAM address
+	pcd8544_set_cursor(screen, 0, 0); // Sets cursor at top left corner (0, 0); Sometimes the screen contrast gets weird after sending the image, and this fixes it
+}
