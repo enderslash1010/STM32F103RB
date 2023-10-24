@@ -9,3 +9,6 @@ Building upon blinky, the on-board LED is held on for a recognizable amount of t
 
 ## SPI and PCD8544
 Controls a Nokia 5110 screen by sending commands to it using the SPI communication protocol. This particular program displays "Hello World!" with hearts on both sides of the text. The implemented library for the screen includes support for toggling the backlight, writing strings, and drawing an image (48x84 size bitmap).
+
+## I2C and LCD
+Drives a HD44780U LCD screen with an attached I2C backpack module. This program displays "Hello World!" with three hearts on the next line. The HD44780U's hardware commands are implemented as software functions in the LCD library. This includes functions for clearing the display, returning the cursor to home, configuring the cursor's appearance, shifting the display, setting DDRAM and CGRAM addresses, and writing to DDRAM and CGRAM. The LCD library also includes functions for toggling the backlight, writing strings, creating and displaying custom characters. 
