@@ -49,7 +49,7 @@ int main(void)
 	pcd8544_write_data(&screen, 0b00001100);
 	pcd8544_write_data(&screen, 0);
 
-	pcd8544_write_string(&screen, "Hello World!", 12);
+	pcd8544_write_string(&screen, "Hello World!");
 
 	pcd8544_write_data(&screen, 0b00001100);
 	pcd8544_write_data(&screen, 0b00011110);

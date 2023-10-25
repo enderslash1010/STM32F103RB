@@ -30,7 +30,7 @@ PCD8544_t pcd8544_init(GPIO_TypeDef* GPIOx, uint8_t RST_Pin, uint8_t DC_Pin, uin
 
 // Misc. control functions
 void pcd8544_toggle_backlight(PCD8544_t* screen);
-void pcd8544_write_string(PCD8544_t* screen, const char* str, uint16_t len);
+void pcd8544_write_string(PCD8544_t* screen, const char* str);
 void pcd8544_set_cursor(PCD8544_t* screen, uint8_t X, uint8_t Y);
 void pcd8544_write_bitmap(PCD8544_t* screen, const uint8_t img[504]);
 

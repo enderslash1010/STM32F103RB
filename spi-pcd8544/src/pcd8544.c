@@ -247,18 +247,21 @@ void pcd8544_toggle_backlight(PCD8544_t* screen)
 	screen->GPIOx->ODR ^= (1 << screen->BL_Pin);
 }
 
-void pcd8544_write_string(PCD8544_t* screen, const char* str, uint16_t len)
+void pcd8544_write_string(PCD8544_t* screen, const char* str)
 {
-	for (int i = 0; i < len; i++)
+	char letter = *str;
+	while (letter != 0x0)
 	{
-		unsigned int letter = str[i] - 0x20; // Translate char at index i to index in font array; handles degree character with cast to unsigned int
-
+		unsigned int letterUInt = letter - 0x20; // Translate char at index i to index in font array; handles degree character with cast to unsigned int
 		for (int j = 0; j < 5; j++)
 		{
-			pcd8544_write_data(screen, DEFAULT_FONT[letter][j]); // write each column of letter to screen, according to font
+			pcd8544_write_data(screen, DEFAULT_FONT[letterUInt][j]); // write each column of letter to screen, according to font
 		}
 		pcd8544_write_data(screen, 0); // Put blank column after each letter, to space out each letter
+
+		letter = *(++str);
 	}
+
 }
 
 void pcd8544_set_cursor(PCD8544_t* screen, uint8_t X, uint8_t Y)
